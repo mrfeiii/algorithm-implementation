@@ -43,10 +43,19 @@ public class mergeSort {
 		
 	}
 
+	public static void bottomUpMergeSort(int[] data,int n){
+		int [] temp = new int[n];
+		for(int subsetSize = 1; subsetSize < n; subsetSize *=2 ){
+			for(int low = 0; low < n-subsetSize; low = low + 2*subsetSize){
+				mergeSortedArray(data,temp,low,low+subsetSize-1,Math.min(low+subsetSize*2-1,n-1) );
+			}
+		}
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[] test = {4,4,6,8,12,43,22,44,16,9};
-		mergeSort(test);
+		bottomUpMergeSort(test,test.length);
 		for(int i = 0 ; i < test.length ; i++){
 		System.out.print(test[i]+" ");
 		}

@@ -28,11 +28,61 @@ public class quickSort {
 		}
 
 	}
+	
+	public static void threeWaysQuickSort(int[] data,int low, int high){
+		int left = low;
+		int right = high;
+		int i = low;
+		
+		if(high <= low) return;
+		
+		while(i<=right){
+			System.out.println("target :" + data[low]);
+			System.out.println(i);
+			System.out.println(left);
+			System.out.println(right);
+			System.out.println("--before----");
+			for(int ii = 0 ; ii < data.length ; ii++){
+				System.out.print(data[ii]+" ");
+				}
+			System.out.println("");
+			System.out.println("--------------------");
+			if(data[left] < data[i]){
+				swap(data,i,right);
+				right--;
+			}else if(data[left] > data[i] ){
+				swap(data,i,left);
+				i++;
+				left++;
+			}else{
+				i++;
+			}
+			System.out.println("--after----");
+			for(int ii = 0 ; ii < data.length ; ii++){
+				System.out.print(data[ii]+" ");
+				}
+			System.out.println("");
+			System.out.println("--------------------");
+			
+		}
+		System.out.println("over");
+		
+		threeWaysQuickSort(data,low,right-1);
+		//System.out.println("2");
+		threeWaysQuickSort(data,left+1,high);
+		
+	}
+	
+	public static void swap(int[] data, int a, int b){
+		int temp = data[a];
+		data[a] = data[b];
+		data[b] = temp;
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[] test = {4,3,6,8,12,43,22,44,16,9};
-		quickSort(test,0,test.length-1);
+		threeWaysQuickSort(test,0,test.length-1);
 		for(int i = 0 ; i < test.length ; i++){
 		System.out.print(test[i]+" ");
 		}
