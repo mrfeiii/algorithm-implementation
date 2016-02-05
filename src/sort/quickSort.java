@@ -81,7 +81,7 @@ public class quickSort {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] test = {4,3,6,8,12,43,22,44,16,9};
+		int[] test = {1,3,6,8,12,43,22,44,16,9};
 		threeWaysQuickSort(test,0,test.length-1);
 		for(int i = 0 ; i < test.length ; i++){
 		System.out.print(test[i]+" ");
