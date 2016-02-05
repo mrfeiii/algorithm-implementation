@@ -1,7 +1,5 @@
 package tree;
 
-import java.util.Scanner;
-
 class Node{
 	private int data;
 	private Node left;
