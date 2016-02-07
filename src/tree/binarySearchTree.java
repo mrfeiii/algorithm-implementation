@@ -164,7 +164,6 @@ class BST {
 					stack.pop();
 				}else{
 					if(current.getLeft() == pre){
-						//System.out.println(pre);
 						current = current.getRight();
 						pre = current;
 					}else if(current.getRight() == pre){
@@ -180,7 +179,17 @@ class BST {
 		
 		}
 	}
-
+	
+	public void Max(){
+		Node temp = root;
+		if(temp == null){
+			return;
+		}
+		while(temp.getLeft()!=null){
+			temp = temp.getLeft();
+		}
+		System.out.println(temp.getData());
+	}
 }
 
 public class binarySearchTree {
