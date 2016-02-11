@@ -190,6 +190,107 @@ class BST {
 		}
 		System.out.println(temp.getData());
 	}
+	
+	public void floor(int n){
+		
+	}
+	
+	private Node floor(Node root,int n){
+		if(root == null){
+			return null;
+		}
+		if(root.getData() == n){
+			return root;
+		}
+		if(root.getData() > n ){
+			return floor(root.getLeft(),n);
+		}
+		
+		Node t = floor(root.getRight(),n);
+		if(t == null){
+			return root;
+		}else{
+			return t;
+		}
+		
+	}
+	
+	private Node ceil(Node root,int n){
+		if (root == null){
+			return null;
+		}
+		
+		if(root.getData() == n){
+			return root;
+		}
+		
+		if(root.getData() < n){
+			return ceil(root.getRight(),n);
+		}
+		
+		Node t = ceil(root.getLeft(),n);
+		if(t == null){
+			return root;
+		}else{
+			return t;
+		}
+		
+	}
+	
+	//Rank, how many keys < n;
+	private int rank(Node node,int n){
+		
+		if(node == null) {
+			return 0;
+		}
+		
+		if(node.getData() == n){
+			return node.count;
+		}
+		
+		if(node.getData() > n){
+			return rank(node.getLeft(),n);
+		}
+		
+		if(node.getData() < n){
+			return node.getLeft().count + node.getRight().count;
+		}
+		
+	}
+	
+	private Node deleteMin(Node n){
+		if(n.getLeft() == null){
+			return n.getRight();
+		}
+		n.getLeft() = deleteMin(n.getLeft());
+		n.count = n.getLeft().count + n.getRight().count + 1;
+		return n;
+	}
+	
+	private Node deleteNode(Node root,int value){
+		if(root == null){
+			return null;
+		}
+		if(root.getData() > value){
+			root.getLeft() = deleteNode(root.getLeft(),value);
+		}else if(root.getData() < value){
+			root.getRight() = deleteNode(root.getRight(),value);
+		}else{
+			if(root.getRight() == null){
+				return root.getLeft();
+			}
+			
+			Node t = root;
+			root = min(root.getRight());
+			root.getRight() = deleteMin(t.getRight());
+			root.getLeft() = t.getLeft();
+		}
+		
+		root.count = 1 + root.getLeft().count + root.getRight().count;
+		return root;
+	}
+	
+	
 }
 
 public class binarySearchTree {
@@ -198,6 +299,8 @@ public class binarySearchTree {
 		// TODO Auto-generated method stub
 
 		BST bst = new BST();
+		
+		String s = "ww";
 		bst.insert(5);
 		bst.insert(4);
 		bst.insert(1);
