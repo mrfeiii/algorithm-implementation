@@ -1,34 +1,51 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		boolean[] t = new boolean[2];
-		char c = '3';
-		Character.isLetter(c);
-		System.out.println(t[1]);
+		int[] in = {1,-1,-1,0};
+		int a = 0;
+		threeSum(in);
+		
 	}
-
-	public static int reverse(int x) {
-        int ret = 0;
-        int orig = Math.abs(x);
-        for(int i = 0 ; i < 32 ; i++){
-           
-            ret = ret | (orig & 1);
-             
-            if(i<31){ret = ret << 1;
-            orig = orig >> 1;}
+	
+	public static List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> ls = new ArrayList< List<Integer> >();
+        if(nums.length<3){
+            return ls;
         }
-        if( x < 0 ){
-            ret = (~ret) + 1;
+        Arrays.sort(nums);
+        for(int i = 0 ; i <= nums.length-3 ; i++){
+            if(i!=0 && nums[i]==nums[i-1]){
+                continue;
+            }
+            List<Integer> ret = new ArrayList<Integer>();
+            ret.add(nums[i]);
+            int start = i+1;
+            int end = nums.length-1;
+            int target = -nums[i];
+            while(start < end){
+            	System.out.println("target:"+target+" sum:"+nums[start]+"+"+nums[end] );
+                if(target > nums[start]+nums[end]){
+                    start++;
+                }else if( target < nums[start]+nums[end]){
+                    end--;
+                }else{
+                    ret.add(nums[start]);
+                    ret.add(nums[end]);
+                    break;
+                }
+            }
+            if( ret.size() == 3 ){
+                ls.add(ret);
+            }
         }
         
-        // if( (x>0 && ret < 0) || (x<0 && ret>0) ){
-        //     return 0;
-        // }
-        
-        return ret;
-        
+        return ls;
     }
 
 }
