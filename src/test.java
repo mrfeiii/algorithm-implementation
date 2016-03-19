@@ -33,7 +33,7 @@ public class test {
                 if(target > nums[start]+nums[end]){
                     start++;
                 }else if( target < nums[start]+nums[end]){
-                    end--;
+                    end;
                 }else{
                     ret.add(nums[start]);
                     ret.add(nums[end]);

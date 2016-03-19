@@ -42,6 +42,8 @@ public class mergeSort {
 		}
 		
 	}
+	
+	
 
 	public static void bottomUpMergeSort(int[] data,int n){
 		int [] temp = new int[n];
@@ -55,7 +57,7 @@ public class mergeSort {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[] test = {4,4,6,8,12,43,22,44,16,9};
-		bottomUpMergeSort(test,test.length);
+		mergeSort(test);
 		for(int i = 0 ; i < test.length ; i++){
 		System.out.print(test[i]+" ");
 		}

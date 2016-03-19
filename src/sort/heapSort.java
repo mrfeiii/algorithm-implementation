@@ -1,9 +1,7 @@
 package sort;
 
-
-
 public class heapSort {
-	/* index start from 0, left child is 2*i + 1,right chile is 2*i + 2 
+	/* index start from 0, left child is 2*i + 1,right child is 2*i + 2 
 	 * max heap */
 	public static void heapSortImpelent(int[] data){
 		int N;

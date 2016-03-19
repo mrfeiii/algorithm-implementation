@@ -29,6 +29,8 @@ public class quickSort {
 
 	}
 	
+
+	
 	public static void threeWaysQuickSort(int[] data,int low, int high){
 		int left = low;
 		int right = high;
